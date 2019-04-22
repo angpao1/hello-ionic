@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-button expand="block" (click)="onClick()">
+    Click me
+  </ion-button> -->
+  <form #productForm="ngForm">
+
+
+    <ion-input type="text" placeholder="Product Name" name="productName" #productName></ion-input>
+    <ion-input type="text" placeholder="Product Category" name="category" #category></ion-input>
+    <ion-input type="text" placeholder="Product Price" name="price" #price></ion-input>
+    <ion-button (click)="addProduct(productName.value, category.value, price.value)">
+      Add
+    </ion-button>
+  </form>
+  <div *ngFor="let product of products">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>{{product.category}}</ion-card-subtitle>
+        <ion-card-title>{{product.productName}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        Keep close to Nature's heart... and break clear away, once in awhile,
+        and climb a mountain or spend a week in the woods. Wash your spirit clean.
+      </ion-card-content>
+      <ion-button fill="outline" slot="end">Edit</ion-button>
+      <ion-button fill="outline" slot="end" (click)="deleteProduct(product.id)">Delete</ion-button>
+    </ion-card>
+  </div>
+
+
+</ion-content>
