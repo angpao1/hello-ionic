@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { Product } from '../helper/product';
 
+
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.page.html',
@@ -13,6 +14,7 @@ export class DetailPage implements OnInit {
 
   products: Product[]
 
+
   ngOnInit() {
     this.productService.getAllProducts().subscribe((products: Product[]) => {
       this.products = products
@@ -23,14 +25,20 @@ export class DetailPage implements OnInit {
     alert("Hello")
   }
 
-  addProduct(productName, category, price) {
-    this.productService.addProduct(productName, category, price).subscribe(res => {
+  addProduct(productName, time) {
+    this.productService.addProduct(productName, time).subscribe(res => {
       this.ngOnInit()
     })
   }
 
   deleteProduct(id) {
     this.productService.deleteProduct(id).subscribe(res => {
+      this.ngOnInit()
+    })
+  }
+
+  updateProduct(productName, category, price, id) {
+    this.productService.updateProduct(productName, category, price, id).subscribe(res => {
       this.ngOnInit()
     })
   }
